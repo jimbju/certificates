@@ -8,7 +8,7 @@ FROM fedora:latest AS builder
 ARG SMALLSTEP_CA_VERSION
 
 RUN \
-    && dnf -y update \
+    dnf -y update \
     && dnf install -y golang gcc pcsc-lite-devel which \
   	&& dnf clean all \
   	&& rm -rf /var/cache/yum
@@ -43,7 +43,7 @@ ENV TZ=Europe/Stockholm
 
 RUN \
     # Download the Fortanix pkcs#11 library
-    && curl -s -L https://download.fortanix.com/clients/4.2.1500/fortanix_pkcs11_4.2.1500.so -o /usr/local/lib/fortanix_pkcs11.so \
+    curl -s -L https://download.fortanix.com/clients/4.2.1500/fortanix_pkcs11_4.2.1500.so -o /usr/local/lib/fortanix_pkcs11.so \
     # Install some needed packages
     && dnf -y update \
     && dnf install -y opensc procps vim which less util-linux pcsc-lite \
