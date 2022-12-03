@@ -66,4 +66,8 @@ if [ ! -f "${STEPPATH}/config/ca.json" ]; then
 	init_if_possible
 fi
 
+ls -lart /usr/bin
+ls -lart /home/step
+ls -lart /
+
 exec "${@}"
