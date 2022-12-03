@@ -64,4 +64,8 @@ if [ ! -f "${STEPPATH}/config/ca.json" ]; then
 	init_if_possible
 fi
 
+echo $STEPPATH
+echo $CONFIGPATH
+echo "#########################################################################3"
+
 exec "${@}"
