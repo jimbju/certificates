@@ -7,6 +7,8 @@ set -eo pipefail
 
 export STEPPATH=$(step path)
 
+echo $STEPPATH
+
 # List of env vars required for step ca init
 declare -ra REQUIRED_INIT_VARS=(DOCKER_STEPCA_INIT_NAME DOCKER_STEPCA_INIT_DNS_NAMES)
 
