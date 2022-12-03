@@ -61,6 +61,7 @@ if [ -f /usr/sbin/pcscd ]; then
 fi
 
 if [ ! -f "${STEPPATH}/config/ca.json" ]; then
+    echo "init if possible<---------------------"
 	init_if_possible
 fi
 

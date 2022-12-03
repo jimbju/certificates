@@ -35,10 +35,10 @@ ARG STEPUID=1000
 ARG STEPGID=1000
 
 COPY --from=builder /src/bin/step-ca             /usr/local/bin/step-ca
-COPY --from=builder /src/bin/step-awskms-init    /usr/local/bin/step-awskms-init
-COPY --from=builder /src/bin/step-cloudkms-init  /usr/local/bin/step-cloudkms-init
-COPY --from=builder /src/bin/step-pkcs11-init    /usr/local/bin/step-pkcs11-init
-COPY --from=builder /src/bin/step-yubikey-init   /usr/local/bin/step-yubikey-init
+#COPY --from=builder /src/bin/step-awskms-init    /usr/local/bin/step-awskms-init
+#COPY --from=builder /src/bin/step-cloudkms-init  /usr/local/bin/step-cloudkms-init
+#COPY --from=builder /src/bin/step-pkcs11-init    /usr/local/bin/step-pkcs11-init
+#COPY --from=builder /src/bin/step-yubikey-init   /usr/local/bin/step-yubikey-init
 COPY --from=builder /root/go/bin/step-kms-plugin /usr/local/bin/step-kms-plugin
 COPY --from=builder /src/docker/entrypoint.sh    /entrypoint.sh
 
