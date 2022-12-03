@@ -42,8 +42,6 @@ COPY --from=builder /src/bin/step-yubikey-init   /usr/local/bin/step-yubikey-ini
 COPY --from=builder /root/go/bin/step-kms-plugin /usr/local/bin/step-kms-plugin
 COPY --from=builder /src/docker/entrypoint.sh    /entrypoint.sh
 
-RUN chmod +x /entrypoint.sh
-
 RUN ls -lart /
 
 USER root
