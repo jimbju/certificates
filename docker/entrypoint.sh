@@ -58,6 +58,7 @@ function step_ca_init () {
 }
 
 if [ -f /usr/sbin/pcscd ]; then
+    echo "pcscd --------------------------------------->"
 	/usr/sbin/pcscd
 fi
 
