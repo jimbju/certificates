@@ -88,6 +88,7 @@ RUN ls -lart /
 # Copy the Fortanix pkcs11 config file
 #COPY fortanix_pkcs11.conf /fortanix_pkcs11.conf
 
-ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+#ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "sleep 3000"]
 
 CMD exec /usr/local/bin/step-ca $CONFIGPATH
