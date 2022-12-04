@@ -57,10 +57,10 @@ function step_ca_init () {
     mv $STEPPATH/password $PWDPATH
 }
 
-if [ -f /usr/sbin/pcscd ]; then
-    echo "pcscd --------------------------------------->"
-	/usr/sbin/pcscd
-fi
+#if [ -f /usr/sbin/pcscd ]; then
+#    echo "pcscd --------------------------------------->"
+#	/usr/sbin/pcscd
+#fi
 
 if [ -f "${STEPPATH}/config/ca.json" ]; then
     echo "whoa what!?----------------------------------asdfsadfsaf!!"
