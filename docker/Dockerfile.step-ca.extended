@@ -91,4 +91,5 @@ RUN ls -lart /
 #ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 ENTRYPOINT ["/bin/bash", "/entrypoint.sh"]
 
-CMD exec /usr/local/bin/step-ca $CONFIGPATH
+#CMD exec /usr/local/bin/step-ca $CONFIGPATH
+CMD exec /usr/local/bin/step-ca --password-file $PWDPATH $CONFIGPATH

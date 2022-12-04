@@ -7,10 +7,6 @@ set -eo pipefail
 
 export STEPPATH="/home/step"
 
-echo $STEPPATH
-echo "#########################################################################3"
-echo $CONFIGPATH
-
 # List of env vars required for step ca init
 declare -ra REQUIRED_INIT_VARS=(DOCKER_STEPCA_INIT_NAME DOCKER_STEPCA_INIT_DNS_NAMES)
 
@@ -57,23 +53,8 @@ function step_ca_init () {
     mv $STEPPATH/password $PWDPATH
 }
 
-#if [ -f /usr/sbin/pcscd ]; then
-#    echo "pcscd --------------------------------------->"
-#	/usr/sbin/pcscd
-#fi
-
-#if [ -f "${STEPPATH}/config/ca.json" ]; then
-#    echo "whoa what!?----------------------------------asdfsadfsaf!!"
-#	init_if_possible
-#fi
-
 if [ ! -f "${STEPPATH}/config/ca.json" ]; then
-    echo "init if possible<---------------------"
 	init_if_possible
 fi
-
-ls -lart /usr/bin
-ls -lart /home/step
-ls -lart /
 
 exec "${@}"
