@@ -460,10 +460,12 @@ func (a *Authority) CreateFailureResponse(ctx context.Context, csr *x509.Certifi
 func (a *Authority) MatchChallengePassword(ctx context.Context, password string) (bool, error) {
 	p, err := provisionerFromContext(ctx)
 	if err != nil {
+		fmt.Println(password)
 		return false, err
 	}
 
 	if subtle.ConstantTimeCompare([]byte(p.GetChallengePassword()), []byte(password)) == 1 {
+		fmt.Println(password)
 		return true, nil
 	}
 
