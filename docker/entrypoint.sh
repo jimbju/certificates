@@ -55,6 +55,17 @@ function step_ca_init () {
 
 if [ ! -f "${STEPPATH}/config/ca.json" ]; then
 	init_if_possible
+    # Add insecure listener
+    sed -i "s|insecureAddress\": \"\"|insecureAddress\": \":8080\"|" "${STEPPATH}/config/ca.json"
+    # Remove certs and secrets that were created by step init
+    rm -f /home/step/certs/*
+    rm -f /home/step/secrets/*
+    # Create a new root CA cert and key (RSA 2048)
+    step certificate create root-ca /home/step/certs/root_ca.crt /home/step/secrets/root_ca.key --kty RSA --size 2048 --profile root-ca --no-password --insecure
+    # Create a new intermediate CA cert and key (and sign with the root CA key)
+    step certificate create root-ca /home/step/certs/intermediate_ca.crt /home/step/secrets/intermediate_ca_key --kty RSA --size 2048 --profile intermediate-ca --ca /home/step/certs/root_ca.crt --ca-key /home/step/secrets/root_ca.key --no-password --insecure
+    # Add SCEP provisioner
+    step ca provisioner add scep --type SCEP --challenge "secret"
 fi
 
 exec "${@}"
