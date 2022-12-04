@@ -62,10 +62,10 @@ function step_ca_init () {
 #	/usr/sbin/pcscd
 #fi
 
-if [ -f "${STEPPATH}/config/ca.json" ]; then
-    echo "whoa what!?----------------------------------asdfsadfsaf!!"
-	init_if_possible
-fi
+#if [ -f "${STEPPATH}/config/ca.json" ]; then
+#    echo "whoa what!?----------------------------------asdfsadfsaf!!"
+#	init_if_possible
+#fi
 
 if [ ! -f "${STEPPATH}/config/ca.json" ]; then
     echo "init if possible<---------------------"
