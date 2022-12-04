@@ -42,8 +42,6 @@ COPY --from=builder /src/bin/step-ca             /usr/local/bin/step-ca
 COPY --from=builder /root/go/bin/step-kms-plugin /usr/local/bin/step-kms-plugin
 COPY --from=builder /src/docker/entrypoint.sh    /entrypoint.sh
 
-RUN ls -lart /
-
 USER root
 
 # Set timezone to Europe/Stockholm
@@ -66,10 +64,7 @@ RUN \
     && rpm -i /tmp/step.rpm && rm -f /tmp/step.rpm \
     # Set the correct time zone
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezone \
-    && ls -lart / \
-    && ls -lart /usr/bin \
-    && ls -lart /home/step
+    && echo $TZ > /etc/timezone
 
 USER step
 
@@ -80,10 +75,6 @@ VOLUME ["/home/step"]
 
 STOPSIGNAL SIGTERM
 HEALTHCHECK CMD step ca health 2>/dev/null | grep "^ok" >/dev/null
-
-# Copy entrypoint.py from repository
-#COPY entrypoint.sh /entrypoint.sh
-RUN ls -lart /
 
 # Copy the Fortanix pkcs11 config file
 #COPY fortanix_pkcs11.conf /fortanix_pkcs11.conf
