@@ -318,7 +318,7 @@ func PKIOperation(ctx context.Context, req request) (Response, error) {
 		}
 		if !challengeMatches {
 			// TODO: can this be returned safely to the client? In the end, if the password was correct, that gains a bit of info too.
-			return createFailureResponse(ctx, csr, msg, microscep.BadRequest, errors.New("wrong password provided <<<<test"))
+			return createFailureResponse(ctx, csr, msg, microscep.BadRequest, errors.New("wrong password provided <<<<test "))
 		}
 	}
 
